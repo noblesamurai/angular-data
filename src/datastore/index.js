@@ -61,6 +61,10 @@ Defaults.prototype.defaultFilter = function (collection, resourceName, params, o
 
   params = params || {};
 
+  // merge in defaults
+  var definition = _this.definitions[resourceName];
+  params = DSUtils._(definition, params);
+
   if (DSUtils.isObject(params.where)) {
     where = params.where;
   } else {
